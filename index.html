@@ -233,15 +233,12 @@
     // bouton WhatsApp
     document.getElementById("btnWhats").onclick=()=>{window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`,"_blank")}
 
-    // nav anchors offset dynamique
-    function scrollWithOffset(el) {
+    // scroll intelligent avec offset dynamique
+    function scrollWithDynamicOffset(el) {
       const rect = el.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      // offset différent mobile vs desktop
-      let offset = window.innerWidth < 768 ? 120 : 80;
-      const top = rect.top + scrollTop - offset;
-
+      const headerHeight = header.offsetHeight; 
+      const top = rect.top + scrollTop - headerHeight - 10; 
       window.scrollTo({top, behavior:"smooth"});
     }
 
@@ -249,7 +246,7 @@
       a.addEventListener("click",(e)=>{
         e.preventDefault();
         const target=document.querySelector(a.getAttribute("href"));
-        if(target){scrollWithOffset(target);}
+        if(target){scrollWithDynamicOffset(target);}
       })
     });
 
