@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>yazan — Menu Digital</title>
+  <meta name="description" content="Découvrez le menu digital de yazan à Alger : pizzas, burgers, desserts et boissons dans un cadre moderne et chaleureux.">
+  <meta name="keywords" content="restaurant Alger, pizza Alger, burger Alger, menu digital Alger, yazan">
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #b92b27;
+      --bg: #F8F5F2; /* Beige crème lin */
+      --card: #ffffff;
+      --muted: #6d6d6d;
+      --maxw: 1200px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Roboto, system-ui, sans-serif;
+      background: var(--bg);
+      color:#222;
+      line-height:1.45;
+    }
+    .container{max-width:var(--maxw);margin:32px auto;padding:20px}
+
+    /* header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 20px;background:#fff;
+      box-shadow:0 4px 14px rgba(0,0,0,0.06);
+      flex-wrap:wrap;transition:all .3s ease;
+    }
+    header.shrink{padding:8px 20px}
+    .brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
+    .logo{
+      width:55px;height:55px;border-radius:12px;
+      background-image:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80");
+      background-size:cover;background-position:center;
+      border:3px solid var(--accent);
+      box-shadow:0 6px 20px rgba(185,43,39,0.15);
+    }
+    .brand h1{font-family:'Playfair Display',serif;margin:0;font-size:1.1rem;color:var(--accent)}
+    .brand p{margin:0;font-size:0.8rem;color:var(--muted)}
+
+    .top-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    nav.main{display:flex;gap:14px}
+    nav.main a{color:var(--accent);font-weight:600;text-decoration:none;font-size:0.9rem}
+    nav.main a:hover{text-decoration:underline}
+
+    .search-bar input{
+      padding:8px 12px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      font-size:0.9rem;
+    }
+    .btn{
+      padding:8px 12px;border-radius:999px;font-weight:700;cursor:pointer;
+      transition:all .18s ease;box-shadow:0 6px 20px rgba(0,0,0,0.06);
+      font-size:0.9rem;
+    }
+    .btn-outline{background:var(--accent);color:#fff}
+    .btn:hover{transform:scale(1.05);box-shadow:0 8px 22px rgba(185,43,39,0.25)}
+
+    /* sections */
+    section{margin-top:50px}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+    .section-head h3{font-family:'Playfair Display',serif;margin:0;font-size:1.4rem;color:var(--accent)}
+    .section-head p{margin:0;color:var(--muted);font-size:0.95rem}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .dish{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 10px 26px rgba(20,20,20,0.05);
+      transform:translateY(24px);opacity:0;transition:all .6s cubic-bezier(.2,.9,.3,1)}
+    .dish.show{transform:none;opacity:1}
+    .dish .thumb{height:170px;background-size:cover;background-position:center;transition:transform .4s ease}
+    .dish:hover .thumb{transform:scale(1.06)}
+    .dish .body{padding:14px}
+    .dish .row{display:flex;justify-content:space-between;align-items:flex-start}
+    .dish .name{font-weight:700}
+    .dish .price{color:var(--accent);font-weight:800}
+    .reserve-btn{
+      display:inline-block;margin-top:6px;padding:6px 10px;font-size:0.85rem;
+      background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;
+      transition:all .2s ease;
+    }
+    .reserve-btn:hover{background:#a0221f}
+
+    /* contact */
+    #contact{background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.05);padding:20px}
+    .contact-wrapper{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+    .contact-info{flex:1;min-width:240px;line-height:1.6}
+    .contact-info p{margin:6px 0;color:#444}
+    .map{margin-top:16px;width:100%;height:260px;border:0;border-radius:12px}
+
+    footer{margin-top:40px;padding:20px;text-align:center;color:var(--muted);font-size:0.9rem}
+
+    html{scroll-behavior:smooth}
+    @media(max-width:900px){
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      .top-actions{flex-wrap:wrap;width:100%;gap:10px}
+      nav.main{flex-wrap:wrap}
+      .search-bar input{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header id="mainHeader">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>Le Bistrot Central</h1>
+          <p>Menu digital — élégant et rapide</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <nav class="main">
+          <a href="#pizzas">Pizzas</a>
+          <a href="#burgers">Burgers</a>
+          <a href="#desserts">Desserts</a>
+          <a href="#boissons">Boissons</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="🔍 Rechercher un plat...">
+        </div>
+        <button class="btn btn-outline" id="btnWhats">WhatsApp / Réserver</button>
+      </div>
+    </header>
+
+    <!-- Pizzas -->
+    <section id="pizzas">
+      <div class="section-head"><h3>Pizzas</h3><p>Nos recettes traditionnelles</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Pizza Reine</div><div class="price">1 300 DA</div></div><p>Sauce tomate, jambon, champignons, mozzarella</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Pizza Margherita</div><div class="price">1 100 DA</div></div><p>Tomate, mozzarella, basilic</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Pizza 4 Fromages</div><div class="price">1 500 DA</div></div><p>Mozzarella, gorgonzola, emmental, parmesan</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Burgers -->
+    <section id="burgers">
+      <div class="section-head"><h3>Burgers & Grillades</h3><p>Savoureux et généreux</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Cheeseburger</div><div class="price">750 DA</div></div><p>Steak, cheddar, salade, tomate, oignons, frites</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Entrecôte Grillée</div><div class="price">2 400 DA</div></div><p>Bœuf grillé, sauce poivre, frites maison</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1626082927389-6abf2e5fc0b6?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Poulet BBQ</div><div class="price">1 600 DA</div></div><p>Demi-poulet rôti, sauce barbecue, pommes de terre</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Desserts -->
+    <section id="desserts">
+      <div class="section-head"><h3>Desserts</h3><p>Pour finir en douceur</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1574085733277-851d9d856a3a?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Fondant au Chocolat</div><div class="price">750 DA</div></div><p>Cœur coulant, glace vanille</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1617196039897-7a3b457769da?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Crêpe au Sucre</div><div class="price">450 DA</div></div><p>Fine et moelleuse, saupoudrée de sucre</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Tiramisu</div><div class="price">850 DA</div></div><p>Café, mascarpone, cacao</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Boissons -->
+    <section id="boissons">
+      <div class="section-head"><h3>Boissons</h3><p>Rafraîchissantes et variées</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Coca-Cola</div><div class="price">150 DA</div></div><p>Bouteille 33cl servie fraîche</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1622482592385-d0a9e7403817?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Jus d’Orange Pressé</div><div class="price">350 DA</div></div><p>Frais et vitaminé</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1527169402691-a93e2b79a5f0?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Thé à la Menthe</div><div class="price">200 DA</div></div><p>Traditionnel et parfumé</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-head"><h3>Contact & Accès</h3><p>Où nous trouver !</p></div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p>📍 Adresse : Rue Didouche Mourad, Alger</p>
+          <p>📞 Téléphone : <a href="tel:+213555123456">+213 555 12 34 56</a></p>
+          <p>🕒 Horaires : 11h – 23h</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Rue+Didouche+Mourad,+Alger" target="_blank" class="btn btn-outline">Itinéraire</a>
+          <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.6623945584003!2d3.048!3d36.775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fadb52d1f54f9%3A0x40b65e7c8c0f0f63!2sRue%20Didouche%20Mourad%2C%20Alger!5e0!3m2!1sfr!2sdz!4v1694292323123!5m2!1sfr!2sdz" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Le Bistrot Central — Menu digital par votre agence</footer>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = "213555123456";
+    const WHATSAPP_TEXT = encodeURIComponent("Bonjour, je souhaite réserver au Bistrot Central.");
+
+    // header shrink
+    const header = document.getElementById("mainHeader");
+    window.addEventListener("scroll",()=>{header.classList.toggle("shrink",window.scrollY>30)});
+
+    // animations au scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show")}})
+    },{threshold:0.2});
+    document.querySelectorAll(".dish").forEach(el=>observer.observe(el));
+
+    // bouton WhatsApp
+    document.getElementById("btnWhats").onclick=()=>{window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`,"_blank")}
+
+    // nav anchors offset (scroll to middle)
+    document.querySelectorAll("nav.main a").forEach(a=>{
+      a.addEventListener("click",(e)=>{
+        e.preventDefault();
+        const target=document.querySelector(a.getAttribute("href"));
+        if(target){target.scrollIntoView({behavior:"smooth",block:"center"});}
+      })
+    });
+
+    // recherche intelligente
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      const dishes = document.querySelectorAll(".dish");
+
+      dishes.forEach(dish => {
+        const name = dish.querySelector(".name").textContent.toLowerCase();
+        const desc = dish.querySelector("p").textContent.toLowerCase();
+
+        if (!query) { dish.style.display = ""; dish.style.order=""; return; }
+
+        if (name.includes(query)) {
+          dish.style.order = 0; dish.style.display = "";
+        } else if (desc.includes(query)) {
+          dish.style.order = 1; dish.style.display = "";
+        } else {
+          dish.style.display = "none";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
