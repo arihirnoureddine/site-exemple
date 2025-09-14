@@ -13,7 +13,8 @@
   <style>
     :root{
       --accent: #d16ba5;   /* Rose vif élégant */
-      --bg: #fce7f3;       /* Rose clair pastel */
+      --bg1: #fbc2eb;      /* Rose pastel clair */
+      --bg2: #a6c1ee;      /* Lilas/bleu clair */
       --card: #ffffff;
       --muted: #6d6d6d;
       --maxw: 1200px;
@@ -22,9 +23,10 @@
     body{
       margin:0;
       font-family: Roboto, system-ui, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
       color:#222;
       line-height:1.45;
+      min-height:100vh;
     }
     .container{max-width:var(--maxw);margin:32px auto;padding:20px}
 
@@ -35,6 +37,7 @@
       padding:14px 20px;background:#fff;
       box-shadow:0 4px 14px rgba(0,0,0,0.06);
       flex-wrap:wrap;transition:all .3s ease;
+      border-radius:0 0 12px 12px;
     }
     header.shrink{padding:8px 20px}
     .brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
@@ -74,7 +77,7 @@
     .section-head p{margin:0;color:var(--muted);font-size:0.95rem}
 
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .dish{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 10px 26px rgba(20,20,20,0.05);
+    .dish{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 10px 26px rgba(20,20,20,0.08);
       transform:translateY(24px);opacity:0;transition:all .6s cubic-bezier(.2,.9,.3,1)}
     .dish.show{transform:none;opacity:1}
     .dish .thumb{height:170px;background-size:cover;background-position:center;transition:transform .4s ease}
@@ -135,7 +138,7 @@
       </div>
     </header>
 
-    <!-- (Les sections restent identiques à ton code d’avant : Pizzas, Burgers, Desserts, Boissons, Contact, Footer) -->
+    <!-- (Sections identiques : Pizzas, Burgers, Desserts, Boissons, Contact, Footer) -->
 
   </div>
 
@@ -197,4 +200,3 @@
   </script>
 </body>
 </html>
-
