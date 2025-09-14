@@ -13,8 +13,7 @@
   <style>
     :root{
       --accent: #d16ba5;   /* Rose vif élégant */
-      --bg1: #fbc2eb;      /* Rose pastel clair */
-      --bg2: #a6c1ee;      /* Lilas/bleu clair */
+      --bg: #fce7f3;       /* Rose clair pastel */
       --card: #ffffff;
       --muted: #6d6d6d;
       --maxw: 1200px;
@@ -23,10 +22,9 @@
     body{
       margin:0;
       font-family: Roboto, system-ui, sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      background: var(--bg);
       color:#222;
       line-height:1.45;
-      min-height:100vh;
     }
     .container{max-width:var(--maxw);margin:32px auto;padding:20px}
 
@@ -37,7 +35,6 @@
       padding:14px 20px;background:#fff;
       box-shadow:0 4px 14px rgba(0,0,0,0.06);
       flex-wrap:wrap;transition:all .3s ease;
-      border-radius:0 0 12px 12px;
     }
     header.shrink{padding:8px 20px}
     .brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
@@ -138,8 +135,85 @@
       </div>
     </header>
 
-    <!-- (Sections identiques : Pizzas, Burgers, Desserts, Boissons, Contact, Footer) -->
+    <!-- Pizzas -->
+    <section id="pizzas">
+      <div class="section-head"><h3>Pizzas</h3><p>Nos recettes traditionnelles</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Pizza Reine</div><div class="price">1 300 DA</div></div><p>Sauce tomate, jambon, champignons, mozzarella</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Pizza Margherita</div><div class="price">1 100 DA</div></div><p>Tomate, mozzarella, basilic</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Pizza 4 Fromages</div><div class="price">1 500 DA</div></div><p>Mozzarella, gorgonzola, emmental, parmesan</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Burgers -->
+    <section id="burgers">
+      <div class="section-head"><h3>Burgers & Grillades</h3><p>Savoureux et généreux</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Cheeseburger</div><div class="price">750 DA</div></div><p>Steak, cheddar, salade, tomate, oignons, frites</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Entrecôte Grillée</div><div class="price">2 400 DA</div></div><p>Bœuf grillé, sauce poivre, frites maison</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1626082927389-6abf2e5fc0b6?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Poulet BBQ</div><div class="price">1 600 DA</div></div><p>Demi-poulet rôti, sauce barbecue, pommes de terre</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Desserts -->
+    <section id="desserts">
+      <div class="section-head"><h3>Desserts</h3><p>Pour finir en douceur</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1574085733277-851d9d856a3a?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Fondant au Chocolat</div><div class="price">750 DA</div></div><p>Cœur coulant, glace vanille</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1617196039897-7a3b457769da?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Crêpe au Sucre</div><div class="price">450 DA</div></div><p>Fine et moelleuse, saupoudrée de sucre</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Tiramisu</div><div class="price">850 DA</div></div><p>Café, mascarpone, cacao</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Boissons -->
+    <section id="boissons">
+      <div class="section-head"><h3>Boissons</h3><p>Rafraîchissantes et variées</p></div>
+      <div class="grid">
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Coca-Cola</div><div class="price">150 DA</div></div><p>Bouteille 33cl servie fraîche</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1622482592385-d0a9e7403817?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Jus d’Orange Pressé</div><div class="price">350 DA</div></div><p>Frais et vitaminé</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+        <div class="dish"><div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1527169402691-a93e2b79a5f0?auto=format&fit=crop&w=800&q=80')" loading="lazy"></div>
+          <div class="body"><div class="row"><div class="name">Thé à la Menthe</div><div class="price">200 DA</div></div><p>Traditionnel et parfumé</p><a href="#" class="reserve-btn">Réserver</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-head"><h3>Contact & Accès</h3><p>Où nous trouver !</p></div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p>📍 Adresse : Rue Didouche Mourad, Alger</p>
+          <p>📞 Téléphone : <a href="tel:+213555123456">+213 555 12 34 56</a></p>
+          <p>🕒 Horaires : 11h – 23h</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Rue+Didouche+Mourad,+Alger" target="_blank" class="btn btn-outline">Itinéraire</a>
+          <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.6623945584003!2d3.048!3d36.775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fadb52d1f54f9%3A0x40b65e7c8c0f0f63!2sRue%20Didouche%20Mourad%2C%20Alger!5e0!3m2!1sfr!2sdz!4v1694292323123!5m2!1sfr!2sdz" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Le Bistrot Central — Menu digital par votre agence</footer>
   </div>
 
   <script>
@@ -200,3 +274,4 @@
   </script>
 </body>
 </html>
+
